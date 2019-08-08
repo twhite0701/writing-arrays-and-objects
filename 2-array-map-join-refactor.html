@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css">
+  <title>Writing JavaScript Assignment</title>
+</head>
+
+<body>
+  <pre class='instructions'>
+    This drill tests your ability to refactor code to be more terse.
+
+    This code has the same output as the previous drill, `10-array-map-join.html`.
+
+    Write down where the refactorings that have taken place:
+
+    1. Using a template string 
+    2. Using an anonymous map function instead of a separate function
+    3. Chaining the map and join and so, not creating an unecessary variable.
+
+    Make changes to the below code so that another 5 list items are displayed with the content: "six", "seven", "eight", "nine" and "ten".
+  </pre>
+
+  <div class="content">
+    <h1>Page with a list</h1>
+    <main class="main">
+      <ul class="list"></ul>
+    </main>
+  </div>
+
+<script>
+  //i added in numbers 5-9
+  const items = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine','ten'];
+
+
+//this function is a combination of the 2 functions from array-map-join
+//it uses the second part of the function first, getListItems in example 1. This statement is truncated. So, it is still keeping the items.map().
+//insead of items.map(getListItem) (from function 1), this function is directly stating the following:
+    //instead of saying, each item in the items array, get the value from getListItem and add it to the listItems array
+    //we  are nesting functions to say: first, return `${item}` displayed within <li>List item `${item}`!</li> from the items variable.
+    //then, take the value you returned above, and add it to a new anonymous map and join that array together with a space in between.
+    //we can use an anonymous map because it is within the same function-- we don't have to call on it from within a separate function.
+//we've used a template literal within the li string so we can call as many numbers as we would like and add them to the array.
+  function getListItems() {
+    return items.map(function (item) {
+      return `<li>List item ${item}!</li>`;
+    }).join('');
+  }
+
+//this method remains to same because the single function gives us the same answer as the previous 2 functions.
+  document.querySelector('.list').innerHTML = getListItems();
+</script>
+</body>
+</html>
